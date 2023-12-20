@@ -1,0 +1,59 @@
+<%- include('partials/header') %>
+
+<div class="container">
+    <h2>Add Yuvak</h2>
+    <form action="/addYuvak" method="post">
+        <div class="form-group">
+            <label for="yuvakName">Yuvak Name:</label>
+            <input type="text" class="form-control" id="yuvakName" name="yuvakName" required>
+        </div>
+        <div class="form-group">
+            <label for="contactNo">Contact Number:</label>
+            <input type="text" class="form-control" id="contactNo" name="contactNo" required>
+        </div>
+        <div class="form-group">
+            <label for="typeOfMember">Type of Member:</label>
+            <select class="form-control" id="typeOfMember" name="typeOfMember" required>
+                <% typeOfMemberArray.forEach(member => { %>
+                    <option value="<%= member %>"><%= member %></option>
+                <% }); %>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="role">Role:</label>
+            <select class="form-control" id="role" name="role" required>
+                <% roleArray.forEach(role => { %>
+                    <option value="<%= role %>"><%= role %></option>
+                <% }); %>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="dateOfBirth">Date of Birth:</label>
+            <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" required>
+        </div>
+        <div class="form-group">
+            <label for="locality">Locality:</label>
+            <!-- Replace with your logic for locality -->
+            <input type="text" class="form-control" id="locality" name="locality">
+        </div>
+        <div class="form-group">
+            <label for="originCity">Origin City:</label>
+            <!-- Replace with your logic for originCity -->
+            <input type="text" class="form-control" id="originCity" name="originCity">
+        </div>
+        <div class="form-group">
+            <label for="dalName">Dal Name:</label>
+            <select class="form-control" id="dalName" name="dalName" required>
+                <% dalArray.forEach(dal => { %>
+                    <option value="<%= dal %>"><%= dal %></option>
+                <% }); %>
+            </select>
+        </div>
+
+        <!-- Add any additional fields as needed -->
+
+        <button type="submit" class="btn btn-primary">Add Yuvak</button>
+    </form>
+</div>
+
+<%- include('partials/footer') %>

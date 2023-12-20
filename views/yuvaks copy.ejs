@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+
+<div class="container">
+  <h2>Yuvaks</h2>
+  <!-- Table to display Yuvaks data -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Yuvak Name</th>
+        <th>Contact Number</th>
+        <th>Type of Member</th>
+        <th>Role</th>
+        <th>Date of Birth</th>
+        <th>Locality</th>
+        <th>Origin City</th>
+        <th>Dal Name</th>
+        <!-- Add any additional headers based on your Yuvak schema -->
+      </tr>
+    </thead>
+    <tbody>
+      <% yuvaks.forEach(yuvak => { %>
+        <tr>
+          <td><%= yuvak.yuvakName %></td>
+          <td><%= yuvak.contactNo %></td>
+          <td><%= yuvak.typeOfMember %></td>
+          <td><%= yuvak.role %></td>
+          <td><%= yuvak.dateOfBirth.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit' }) %></td>
+          <td><%= yuvak.locality %></td>
+          <td><%= yuvak.originCity %></td>
+          <td><%= yuvak.dalName %></td>
+          <!-- Add any additional cells based on your Yuvak schema -->
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('partials/footer') %>
+
+

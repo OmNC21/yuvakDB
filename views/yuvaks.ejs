@@ -1,0 +1,57 @@
+<%- include('partials/header') %>
+
+<div class="container">
+  <h2>Yuvaks</h2>
+  <!-- Table to display Yuvaks data -->
+  <table class="table" id="yuvaksTable">
+    <thead>
+      <tr>
+        <th><button onclick="sortTable(0)">Yuvak Name</button></th>
+        <th><button onclick="sortTable(1)">Contact Number</button></th>
+        <th><button onclick="sortTable(2)">Type of Member</button></th>
+        <th><button onclick="sortTable(3)">Role</button></th>
+        <th><button onclick="sortTable(4)">Date of Birth</button></th>
+        <th><button onclick="sortTable(5)">Locality</button></th>
+        <th><button onclick="sortTable(6)">Origin City</button></th>
+        <th><button onclick="sortTable(7)">Dal Name</button></th>
+        <!-- Add any additional headers based on your Yuvak schema -->
+      </tr>
+    </thead>
+    <tbody>
+      <% yuvaks.forEach(yuvak => { %>
+        <tr>
+          <td><%= yuvak.yuvakName %></td>
+          <td><%= yuvak.contactNo %></td>
+          <td><%= yuvak.typeOfMember %></td>
+          <td><%= yuvak.role %></td>
+          <td><%= yuvak.dateOfBirth.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit' }) %></td>
+          <td><%= yuvak.locality %></td>
+          <td><%= yuvak.originCity %></td>
+          <td><%= yuvak.dalName %></td>
+          <!-- Add any additional cells based on your Yuvak schema -->
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('partials/footer') %>
+
+<script>
+  function sortTable(columnIndex) {
+    const table = document.getElementById("yuvaksTable");
+    const rows = Array.from(table.rows).slice(1); // Exclude the header row
+
+    rows.sort((a, b) => {
+      const aValue = a.cells[columnIndex].textContent.trim();
+      const bValue = b.cells[columnIndex].textContent.trim();
+      return aValue.localeCompare(bValue);
+    });
+
+    // Remove existing rows from the table
+    rows.forEach(row => table.deleteRow(-1));
+
+    // Append sorted rows to the table
+    rows.forEach(row => table.appendChild(row));
+  }
+</script>

@@ -1,0 +1,26 @@
+<%- include('partials/header') %>
+
+<div class="container">
+  <h2>Dals</h2>
+  <!-- Table to display Dals data -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Dal Name</th>
+        <th>Dal Type</th>
+        <th>Dal Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% dals.forEach(dal => { %>
+        <tr>
+          <td><%= dal.dalName %></td>
+          <td><%= dal.dalType %></td>
+          <td><%= dal.dalLocation %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('partials/footer') %>
